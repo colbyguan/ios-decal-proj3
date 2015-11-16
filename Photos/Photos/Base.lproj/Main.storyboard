@@ -1,26 +1,220 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Ey-Lx-bfO">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Photos Collection View Controller-->
+        <scene sceneID="MPL-Pd-0pR">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Photos" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <collectionViewController id="vkH-zP-09L" customClass="PhotosCollectionViewController" customModule="Photos" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Kpw-Dg-34j">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dc9-Ox-8y3">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="24"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photo" id="5tH-Ym-a0A">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wFC-5p-kq5">
+                            <autoresizingMask key="autoresizingMask"/>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="vkH-zP-09L" id="qea-yf-vqv"/>
+                            <outlet property="delegate" destination="vkH-zP-09L" id="S3m-8M-cgq"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="cIh-Ls-SRI"/>
+                    <connections>
+                        <segue destination="Q7L-r7-Kbq" kind="show" identifier="goToPhoto" id="XWg-aH-wxw"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JQK-qb-rne" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1756.5" y="328"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="Drb-rG-Xts">
+            <objects>
+                <viewController id="Q7L-r7-Kbq" customClass="PhotoViewController" customModule="Photos" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lgy-RI-Qd2"/>
+                        <viewControllerLayoutGuide type="bottom" id="vgK-H2-oqc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Dd-ov-cZZ">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xij-E8-bNT">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="266" y="443" width="90" height="21"/>
+                                </variation>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CTv-AB-sx3">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="56" y="72" width="300" height="300"/>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYb-vn-ekt">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="256" y="392" width="42" height="21"/>
+                                </variation>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Designbolts-Free-Valentine-Heart-Heart.ico" translatesAutoresizingMaskIntoConstraints="NO" id="D2X-gd-aRd">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="183" y="380" width="65" height="60"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2O-AM-NkI">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="183" y="380" width="46" height="45"/>
+                                </variation>
+                                <connections>
+                                    <action selector="likeButtonPressed:" destination="Q7L-r7-Kbq" eventType="touchUpInside" id="3mw-G2-Qh1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8V-0B-8sV">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="56" y="442" width="202" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xij-E8-bNT" firstAttribute="top" secondItem="D2X-gd-aRd" secondAttribute="bottom" constant="7" id="0bh-yE-sfh"/>
+                            <constraint firstItem="dYb-vn-ekt" firstAttribute="leading" secondItem="k2O-AM-NkI" secondAttribute="trailing" constant="8" id="6ez-DW-6RZ"/>
+                            <constraint firstItem="vgK-H2-oqc" firstAttribute="top" secondItem="W8V-0B-8sV" secondAttribute="bottom" constant="198" id="DGk-gn-knf"/>
+                            <constraint firstItem="k2O-AM-NkI" firstAttribute="centerX" secondItem="9Dd-ov-cZZ" secondAttribute="centerX" id="G59-mk-95s"/>
+                            <constraint firstItem="dYb-vn-ekt" firstAttribute="top" secondItem="CTv-AB-sx3" secondAttribute="bottom" constant="20" id="IrJ-zA-o7f"/>
+                            <constraint firstItem="D2X-gd-aRd" firstAttribute="centerX" secondItem="9Dd-ov-cZZ" secondAttribute="centerX" id="LpP-Yd-jBB"/>
+                            <constraint firstItem="CTv-AB-sx3" firstAttribute="centerX" secondItem="9Dd-ov-cZZ" secondAttribute="centerX" id="M0r-Ox-zcd"/>
+                            <constraint firstItem="D2X-gd-aRd" firstAttribute="top" secondItem="CTv-AB-sx3" secondAttribute="bottom" constant="8" id="P6r-4K-TXD"/>
+                            <constraint firstItem="Xij-E8-bNT" firstAttribute="top" secondItem="dYb-vn-ekt" secondAttribute="bottom" constant="19" id="Ubn-38-IfE"/>
+                            <constraint firstItem="k2O-AM-NkI" firstAttribute="top" secondItem="CTv-AB-sx3" secondAttribute="bottom" constant="8" id="fUs-j9-EV1"/>
+                            <constraint firstItem="W8V-0B-8sV" firstAttribute="leading" secondItem="9Dd-ov-cZZ" secondAttribute="leadingMargin" constant="30" id="kaK-uW-dDo"/>
+                            <constraint firstItem="CTv-AB-sx3" firstAttribute="top" secondItem="lgy-RI-Qd2" secondAttribute="bottom" id="mcu-en-fSl"/>
+                            <constraint firstItem="W8V-0B-8sV" firstAttribute="top" secondItem="k2O-AM-NkI" secondAttribute="bottom" constant="8" id="n8z-fk-cjF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xij-E8-bNT" secondAttribute="trailing" constant="30" id="qUb-0e-fd5"/>
+                            <constraint firstItem="Xij-E8-bNT" firstAttribute="top" secondItem="k2O-AM-NkI" secondAttribute="bottom" constant="7" id="t0L-mb-cKC"/>
+                            <constraint firstItem="vgK-H2-oqc" firstAttribute="top" secondItem="Xij-E8-bNT" secondAttribute="bottom" constant="199" id="ueX-mN-FeV"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Xij-E8-bNT"/>
+                                <exclude reference="CTv-AB-sx3"/>
+                                <exclude reference="dYb-vn-ekt"/>
+                                <exclude reference="D2X-gd-aRd"/>
+                                <exclude reference="k2O-AM-NkI"/>
+                                <exclude reference="W8V-0B-8sV"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="M0r-Ox-zcd"/>
+                                <exclude reference="mcu-en-fSl"/>
+                                <exclude reference="LpP-Yd-jBB"/>
+                                <exclude reference="P6r-4K-TXD"/>
+                                <exclude reference="G59-mk-95s"/>
+                                <exclude reference="fUs-j9-EV1"/>
+                                <exclude reference="kaK-uW-dDo"/>
+                                <exclude reference="n8z-fk-cjF"/>
+                                <exclude reference="6ez-DW-6RZ"/>
+                                <exclude reference="IrJ-zA-o7f"/>
+                                <exclude reference="0bh-yE-sfh"/>
+                                <exclude reference="Ubn-38-IfE"/>
+                                <exclude reference="qUb-0e-fd5"/>
+                                <exclude reference="t0L-mb-cKC"/>
+                                <exclude reference="DGk-gn-knf"/>
+                                <exclude reference="ueX-mN-FeV"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Xij-E8-bNT"/>
+                                <include reference="CTv-AB-sx3"/>
+                                <include reference="dYb-vn-ekt"/>
+                                <include reference="D2X-gd-aRd"/>
+                                <include reference="k2O-AM-NkI"/>
+                                <include reference="W8V-0B-8sV"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="M0r-Ox-zcd"/>
+                                <include reference="mcu-en-fSl"/>
+                                <include reference="LpP-Yd-jBB"/>
+                                <include reference="P6r-4K-TXD"/>
+                                <include reference="G59-mk-95s"/>
+                                <include reference="fUs-j9-EV1"/>
+                                <include reference="kaK-uW-dDo"/>
+                                <include reference="n8z-fk-cjF"/>
+                                <include reference="6ez-DW-6RZ"/>
+                                <include reference="IrJ-zA-o7f"/>
+                                <include reference="0bh-yE-sfh"/>
+                                <include reference="Ubn-38-IfE"/>
+                                <include reference="qUb-0e-fd5"/>
+                                <include reference="t0L-mb-cKC"/>
+                                <include reference="DGk-gn-knf"/>
+                                <include reference="ueX-mN-FeV"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="Xij-E8-bNT" id="rO1-0o-fpR"/>
+                        <outlet property="likeButton" destination="k2O-AM-NkI" id="7ls-Mg-Oul"/>
+                        <outlet property="likesLabel" destination="dYb-vn-ekt" id="zPc-Ou-OBz"/>
+                        <outlet property="photoImage" destination="CTv-AB-sx3" id="I4d-Lz-1be"/>
+                        <outlet property="usernameLabel" destination="W8V-0B-8sV" id="26r-5f-0mM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1PJ-oz-Gyv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2443.5" y="325"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6Lr-DG-Yao">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Ey-Lx-bfO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gbp-Qr-Zgz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vkH-zP-09L" kind="relationship" relationship="rootViewController" id="MI0-NG-hlS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hop-DV-l2K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="841.5" y="328"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Designbolts-Free-Valentine-Heart-Heart.ico" width="256" height="256"/>
+    </resources>
 </document>
